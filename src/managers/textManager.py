@@ -11,10 +11,9 @@ class TextManager():
 
     def init_styles(self):
         self.begin_syle='style="color:yellow"'
-        self.current_style='style="color:white; text-decoration: underline;"'
+        self.current_style='style="color:white;text-decoration: underline;"'
         self.end_style='style="color:blue"'
-        self.current_style = self.begin_syle
-        
+        #self.current_style = self.end_style
 
     def set_text(self, text):
         self.cursor_pos = 0
