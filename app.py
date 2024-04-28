@@ -1,9 +1,10 @@
 from sys import argv, exit
-from PySide6.QtWidgets import *
+from PySide6 import QtWidgets, QtCore
 from src.layouts.main import Window
 
 if __name__ == "__main__":
-    app = QApplication(argv)
+    QtCore.QCoreApplication.setAttribute(QtCore.Qt.AA_ShareOpenGLContexts, True)
+    app = QtWidgets.QApplication(argv)
     window = Window()
     window.show()
     exit(app.exec())
