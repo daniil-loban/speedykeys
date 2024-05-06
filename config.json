@@ -1,0 +1,21 @@
+{
+    "textStyle": {
+        "background-color": "#2bcf06",
+        "color": "#0000CD",
+        "fontFamily": "URW Bookman [UKWN]",
+        "fontSize": "16pt",
+        "fontBold": false,
+        "fontItalic": false,
+        "fontUnderline": false,
+        "cursorWidth": 4
+    },
+    "selectStyle": {
+        "previousTextColor": "yellow",
+        "currentTextColor": "white",
+        "nextTextColor": "#3d40d3",
+        "previousTextDecoration": "line-through",
+        "currentTextDecoration": "underline",
+        "nextTextDecoration": null
+    },
+    "language": "ru"
+}
