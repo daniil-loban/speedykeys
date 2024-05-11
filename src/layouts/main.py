@@ -1,4 +1,6 @@
+import os
 from sys import argv, exit
+from pathlib import Path
 from PySide6 import QtCore
 from PySide6.QtGui import *
 from PySide6.QtWidgets import *
@@ -8,12 +10,19 @@ from ..managers.settingsManager import SettingsManager
 from ..managers.layoutManager import apply_ui
 
 class Window(QMainWindow):
-    def __init__(self, parent=None):
-        super(Window, self).__init__(parent)
-        apply_ui(self, 'mainwindow.ui', [CustomTextEdit])
+    def __init__(self, app=None):
+        super(Window, self).__init__()
+        self.app = app
         self.settings = SettingsManager()
+        self.load_lang()        
+        apply_ui(self, 'mainwindow.ui', [CustomTextEdit])
         self.update_text_styles()
   
+    def load_lang(self):
+        translator = QtCore.QTranslator(self.app)
+        path =  os.fspath(Path(__file__).resolve().parents[1] / 'lang' / f'{self.settings.get_language()}.qm' )
+        if translator.load(path): self.app.installTranslator(translator)
+
     def update_text_styles(self):
         self.settings.open()
         self.textedit = self.findChild(QTextEdit, u"textEdit")

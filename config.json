@@ -1,8 +1,8 @@
 {
     "textStyle": {
-        "background-color": "#2bcf06",
+        "background-color": "#000000",
         "color": "#0000CD",
-        "fontFamily": "URW Bookman [UKWN]",
+        "fontFamily": "FreeMono",
         "fontSize": "16pt",
         "fontBold": false,
         "fontItalic": false,
@@ -10,12 +10,12 @@
         "cursorWidth": 4
     },
     "selectStyle": {
-        "previousTextColor": "yellow",
+        "previousTextColor": "#18ce24",
         "currentTextColor": "white",
-        "nextTextColor": "#3d40d3",
+        "nextTextColor": "#d3ce35",
         "previousTextDecoration": "line-through",
         "currentTextDecoration": "underline",
         "nextTextDecoration": null
     },
-    "language": "ru"
+    "language": "русский"
 }

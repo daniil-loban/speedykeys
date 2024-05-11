@@ -1,4 +1,6 @@
 import json
+import os
+from pathlib import Path
 
 
 class SettingsManager():
@@ -46,11 +48,16 @@ class SettingsManager():
             self.make_text_part_styles('nextTextColor', 'nextTextDecoration')
         )
 
-    def get_language(self, language):
+    def get_language(self):
         return self.settings['language']
 
     def set_language(self, language):
         self.settings['language'] = language
+
+    def get_all_languages(self):
+        lang_dir = os.listdir(os.fspath(Path(__file__).resolve().parents[1] / 'lang' ))
+        lang_files = filter(lambda s: s[-3:] == '.qm',  lang_dir)
+        return map(lambda s: s[:-3], lang_files)  
 
     def get_font(self):
         s = self.settings['textStyle']

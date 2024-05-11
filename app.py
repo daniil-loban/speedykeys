@@ -5,6 +5,6 @@ from src.layouts.main import Window
 if __name__ == "__main__":
     QtCore.QCoreApplication.setAttribute(QtCore.Qt.AA_ShareOpenGLContexts, True)
     app = QtWidgets.QApplication(argv)
-    window = Window()
+    window = Window(app)
     window.show()
     exit(app.exec())
