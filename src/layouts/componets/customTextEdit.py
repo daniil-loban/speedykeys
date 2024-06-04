@@ -1,15 +1,16 @@
 from PySide6 import QtCore
 from PySide6.QtGui import *
 from PySide6.QtWidgets import *
+
+from ...helpers import getAppSettings, getPluginByIndex, getPluginCount
 from ...managers.settingsManager import SettingsManager
 from ...managers.textManager import TextManager
-from ...managers.layoutManager import apply_ui
 
 
 class CustomTextEdit(QTextEdit):
     def __init__(self, parent=None):
         super(CustomTextEdit, self).__init__(parent)
-        self.settings = SettingsManager()
+        self.settings = getAppSettings()
         self.text_manager = TextManager()
         self.textChanged.connect(self.onTextChanged)
         self.setup_textedit(self)
@@ -34,6 +35,12 @@ class CustomTextEdit(QTextEdit):
         self.move_cursor(cur_pos)
         self.setFocus()
 
+    def pluginsAction(self, char, isCorrectEnter):
+        size = getPluginCount()
+        for i in range(size):
+            p = getPluginByIndex(i)
+            p.action((char, isCorrectEnter))
+
     def onTextChanged(self):
         textA = self.toPlainText()
         textB = self.text_manager.get_text()
@@ -43,7 +50,8 @@ class CustomTextEdit(QTextEdit):
         isIncorrectPos = cur_pos + 1 != self.textCursor().position()
         isDeletedText = len(textA) < len(textB)
         isCorrectEnter = not isIncorrectPos and textA[cur_pos] == textB[cur_pos]
-        
+        self.pluginsAction(textA[cur_pos], isCorrectEnter)
+
         if isIncorrectPos or isDeletedText: 
             self.text_redraw()
             self.move_cursor(cur_pos)

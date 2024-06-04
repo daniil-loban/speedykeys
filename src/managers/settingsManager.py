@@ -58,6 +58,14 @@ class SettingsManager():
         lang_dir = os.listdir(os.fspath(Path(__file__).resolve().parents[1] / 'lang' ))
         lang_files = filter(lambda s: s[-3:] == '.qm',  lang_dir)
         return map(lambda s: s[:-3], lang_files)  
+    
+    def get_all_plugins(self):
+        plugins= os.listdir(os.fspath(Path(__file__).resolve().parents[1] / 'plugins' ))
+        return plugins
+    
+    def is_active_plugin(self, name):
+        pass
+        #self.settings.plugins
 
     def get_font(self):
         s = self.settings['textStyle']

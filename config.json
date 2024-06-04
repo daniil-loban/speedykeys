@@ -17,5 +17,11 @@
         "currentTextDecoration": "underline",
         "nextTextDecoration": null
     },
-    "language": "русский"
+    "language": "русский",
+    "plugins": [
+        {
+            "name": "counter",
+            "active": true
+        }
+    ]
 }
